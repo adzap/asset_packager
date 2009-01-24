@@ -59,6 +59,7 @@ module Synthesis
       end
 
       def build_all
+        ensure_tmp_dir_exists
         @@asset_packages_yml.keys.each do |asset_type|
           @@asset_packages_yml[asset_type].each { |p| self.new(asset_type, p).build }
         end
@@ -207,6 +208,11 @@ module Synthesis
         file_list.reverse! if extension == "js"
         file_list
       end
-   
+
+      def self.ensure_tmp_dir_exists
+        # Using git, the tmp directory sometimes does not exists. Rails 2.x will create it on startup but
+        # if you use the build_all rake task before Rails starts then we have to make sure 'tmp' exists.
+        FileUtils.mkdir_p(File.join(RAILS_ROOT, 'tmp'))
+      end
   end
 end
