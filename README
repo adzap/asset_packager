@@ -158,14 +158,7 @@ rake asset:packager:delete_all       # Delete all asset builds
 
 == Running the tests
 
-This plugin has a full suite of tests. But since they
-depend on rails, it has to be run in the context of a
-rails app, in the vendor/plugins directory. Observe:
-
-> rails newtestapp
-> cd newtestapp
-> ./script/plugin install ./script/plugin install git://github.com/sbecker/asset_packager.git
-> rake test:plugins PLUGIN=asset_packager # all tests pass
+This plugin has a full suite of tests. Just run 'rake test' in the plugin base directory. 
 
 == License
 Copyright (c) 2006-2008 Scott Becker - http://synthesis.sbecker.net
